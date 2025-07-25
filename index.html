@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspired Frost - Artisan Cakery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=DM+Sans:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+            color: #eddbd3;
+            line-height: 1.6;
+            overflow-x: hidden;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .nav-left,
+            .nav-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 100pt;
+            text-transform: uppercase;
+            color: #00000;
+            text-align: center; /* centers the title text */
+            margin-top: 30px;  /* moves it down from the top */
+            margin-bottom: 10px; /* gives a little space below */
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* ✅ add this */
+            margin: 0 auto;       /* ✅ ensure it's horizontally centered */
+            text-align: center;
+            gap: 20px;
+            z-index: 10; /* ensures it’s above other elements */
+            position: relative;
+        }
+
+        .hero-text-wrapper {
+            flex: 1;
+            display: flex;
+            margin-top: 0px; /* adjust as needed */
+            flex-direction: column;
+            text-align: center; /* centers the title text */
+            align-items: center; /* ✅ center horizontally */
+            width: 100%; /* ensures it takes full width */
+            justify-content: center;
+            color: #000;
+            position: relative;
+            z-index: 0;
+        }
+
+
+        .hero-title-wrapper {
+            flex: 1;
+            display: block; /* allows the title to take full width */
+            max-width: 100%;
+            text-align: center; /* centers the title text */
+            margin-bottom: 20px; /* adds space below the title */
+            position: relative;
+            z-index: 999; /* ensures it’s above other elements */
+        }
+        
+
+        .hero-byline {
+            margin-top: 0;
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #000;
+        }
+
+        .hero-byline-img {
+            justify-content: center; /* center total layout horizontally */
+            max-width: 220px;
+            height: auto;
+            margin-top: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .hero-tagline-custom p {
+            font-style: italic;
+            font-size: 20px;
+            margin-top: 50px;
+            color: #666;
+        }
+
+        .hero-button-custom a {
+             display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #c68b77, #d8a5c6);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px; /* or try 30px or 40px if you want more space */
+            font-weight: bold;
+        }
+
+        .behind-text {
+            position: relative;
+            z-index: 0; /* lower than other elements */
+        }
+
+        /* Header */
+        header {
+            background: #fefdfd;
+            backdrop-filter: none;
+            padding: 5px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .centered-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16pt;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 200px;
+            color: #6b5b73;
+        }
+
+
+        .logo-img-link {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+        }
+
+        .logo-img {
+            height: 65px;
+                margin-left: 0;
+                object-fit: contain;
+                display: block;
+        }
+        
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+           font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            color: #848484;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a574;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #d4a574;
+        }
+
+        .text-center-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 0;
+        }
+
+        .hero-text-centered {
+            text-align: center;
+            align-items: center;
+            display: flex;
+            margin: 0 auto;
+            z-index: 100;   /* ensures it’s above other elements */
+            position: relative;
+            width: 100%;
+            z-index: 10;
+            position: relative;
+            margin-top: -50px;
+
+        }        
+
+        
+        .order-now {
+            background: linear-gradient(to right, #c68b77, #d8a5c6);
+            color: white !important;   /* Ensure text is readable */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .order-now:hover {
+            background-color: #b8864b; /* Slightly darker on hover */
+            transform: scale(1.05);    /* Slight zoom effect */
+        }
+
+
+        /* Hero Section */
+        .hero {
+             text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 30% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(189, 157, 181, 0.1) 0%, transparent 50%);
+            padding: 180px 20px 100px;
+            overflow: hidden;
+            min-width: 100vh; /* 🟢 This ensures it fills full screen */
+            min-height: 100vh; /* 🟢 This ensures it fills full screen */
+            border-radius: 0 !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+
+           
+        }
+
+        .hero-content {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 200;
+            color: #000;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-align: center;
+            white-space: normal; /* <-- allows wrapping */
+            max-width: 100%;     /* <-- prevents it from pushing out */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #8a7b8b;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #d4a574 0%, #bd9db5 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.4);
+        }
+
+        .hero-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-image img {
+            max-width: 350px;
+            height: auto;
+            border-radius: 20px;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* aligns items to the top */
+            padding: 60px 40px 20px; /* add padding to the top and bottom */
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+            position: relative;
+            flex-wrap: wrap; /* allows responsiveness */
+        }
+
+        .cake-container {
+            position: absolute;
+            top: -255px; /* adjust for vertical placement */
+            left: -35%;  /* positions it toward the left side */
+            max-width: 650px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            z-index: 0; /* places it behind text */
+            pointer-events: none; /* optional: makes it decorative only */
+        }
+
+
+        .hero-img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0; /* ensures it’s below the text */
+            position: relative;
+        }
+
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+            color: #eddbd3;
+            min-height: 100vh; /* ✅ fills entire screen */
+            display: flex;
+            align-items: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+            color: #ab7868;
+            margin-bottom: 30px;
+            font-weight: 200;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: flex-end; /* aligns image to the right */
+            align-items: center;       /* centers vertically */
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: contain;       /* shows full image without cropping */
+            border: 5px solid white;   /* white border */
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+            color: #eddbd3;
+            padding: 80px 20px;
+            min-height: auto; /* removes full screen constraint */
+            display: block;
+            
+        }
+
+        .services h2 {
+            padding-top: 50px; /* adjust as needed */
+            text-align: center;
+            font-size: 3.5rem;
+            color: #ab7868;
+            margin-bottom: 80px;
+            font-weight: 200;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px 30px; /* vertical gap = 20px, horizontal gap = 30px */
+            max-width: 2000px; /* keeps grid from getting too wide */
+            top: -75px; /* adjust value to move grid up */
+            margin: 0 auto;    /* centers the grid */
+            position: relative; /* allows absolute positioning of child elements */
+        }
+
+        .service-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            position: relative;
+            overflow: hidden;
+            max-height: 100vh; /* prevents overflow */
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a574, #bd9db5);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .service-card p {
+            color: #8a7b8b;
+            font-size: 1rem;
+        }
+
+        .service-card img {
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .service-text {
+            flex: 1;
+        }
+
+
+        /* Gallery Section */
+          .gallery {
+                text-align: center;
+                padding: 120px 20px;
+                background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+                color: #eddbd3;
+                overflow-x: hidden;
+                padding: 120px 20px 20px; /* top right/left bottom */
+            }
+
+            .gallery h2 {
+                font-size: 3rem;         /* controls text size */
+                color: #ab7868;          /* heading color */
+                margin-bottom: 40px;     /* space between header and carousel */
+                font-weight: 200;        /* light weight for elegant style */
+                font-family: 'Playfair Display', serif;
+            }
+
+            .gallery-scroll-wrapper {   
+                overflow-y: auto;
+                overflow-x: hidden;
+                white-space: normal;
+            }
+
+            
+
+             .gallery-strip img:hover {
+                transform: scale(1.05);
+            }
+
+            .carousel {
+                position: relative;
+                overflow: hidden;
+                margin: 30px auto 0;  /* pushes carousel itself down */
+               
+            }
+
+            .carousel-track-container {
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .carousel-track {
+                display: flex;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .carousel-slide {
+                min-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .carousel-slide img {
+                width: 50%;
+                height: 70vh;  /* Adjust height as needed */
+                object-fit: cover;
+                border-radius: 5px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+                box-sizing: border-box;
+
+            }
+
+            .carousel-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: #f3e5e0;
+                border: none;
+                padding: 10px 20px;
+                font-size: 2rem;
+                cursor: pointer;
+                z-index: 1;
+                border-radius: 8px;
+                color: #6b5b73;
+            }
+
+            .carousel-button.prev {
+                left: 10px;
+            }
+
+            .carousel-button.next {
+                right: 10px;
+            }  
+
+     /* Contact Section */
+         .contact {
+            padding: 125px 20px;         /* reduce padding so content breathes */
+            background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+            color: #eddbd3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 125px; /* space above content */
+            min-height: auto; /* removes full screen constraint */
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;          /* ✅ centers all child elements horizontally */
+            text-align: center;           /* ✅ makes all text center-aligned */
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .contact h2 {
+            font-size: 3.5rem;
+            color: #ab7868;
+            font-weight: 200;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            text-align: center;           /* ✅ force center heading */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            text-align: center;
+            white-space: nowrap;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (max-width: 768px) {
+            .contact p {
+                font-size: 1rem;  /* ✅ smaller on tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact p {
+                font-size: 0.9rem; /* ✅ even smaller on phones */
+            }
+        }
+    
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: stretch;       /* ✅ Makes inputs fill width */
+            margin: 0 auto;             /* ✅ Centers the whole form on the page */
+            width: 100%;
+            max-width: 500px;
+            text-align: left;           /* ✅ Labels and fields align left */
+        }
+
+        .contact-form label {
+            align-self: flex-start;        /* keeps labels left aligned */
+            width: 100%;
+            max-width: 500px;
+            color: #8f6b6b 
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #c68b77, #d8a5c6);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            margin-top: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #fdf7f0 0%, #f5f0f5 100%);
+            color: #eddbd3;
+            color: #666;      /* darker text to contrast */
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;            /* space between items */
+            margin-bottom: 20px;  /* space above copyright */
+            flex-wrap: wrap;      /* stack on small screens */
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .floating-element {
+                display: none;
+            }
+        
+        
+        }
+
+        .page-bottom-flower {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page-bottom-flower img {
+            display: block;
+            height: 275px; /* adjust as needed */
+            width: auto;
+        }
+
+         .hero-flower-bottom {
+            position: absolute;
+           
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .hero-flower-bottom img {
+            height: 350px; /* Adjust size to avoid overlapping cake */
+            width: auto;
+            display: block;
+        }        
+
+        .hero-flower-right {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-flower-img {
+            height: 920px; /* or any size you want */
+            width: auto;
+            z-index: 1;
+            position: relative; /* Required for z-index to work */
+        }
+
+
+        @media (max-width: 768px) {
+  .hero-flex {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 120px;
+    }
+
+    .hero-img-container {
+        justify-content: center;
+    }
+
+    .hero-img {
+        max-width: 80%;
+    }
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <nav class="nav-container">
+  <div class="nav-left">
+    <a href="https://www.instagram.com/inspired_frosts/" target="_blank" class="logo-img-link">
+      <img src="vectorlogo.png" alt="Inspired Frost Logo" class="logo-img">
+    </a>
+  </div>
+ 
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+    <div class="nav-right">
+    <ul class="nav-links">
+        <li><a href="#order-Now" class="order-now">Order now</a></li>
+    </ul>
+    </div>
+
+</nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+  <div class="hero-flex">
+
+    <!-- Left: Cake Image -->
+    <div class="cake-container">
+        <img src="Cake.png" alt="Decorated Cake" class="hero-img">
+    </div>
+
+    <!-- Right: Text (wrapped for centering) -->
+        <div class="hero-text-centered">
+            <div class="hero-text">
+            <div class="hero-title-wrapper behind-text">
+                <h1>INSPIRED FROSTS</h1>
+                <img src="bylf.png" alt="by Lori Fulmer" class="hero-byline-img">
+            </div>
+            <div class="hero-tagline-custom">
+                <p>Elegant. Edible. Extraordinary</p>
+            </div>
+            <div class="hero-button-custom">
+                <a href="#contact">Order Now</a>
+            </div>
+            </div>
+        </div>
+        </div>
+  </div>
+
+  <!-- New white flower on bottom-right -->
+    <div class="hero-flower-right">
+        <img src="White.png" alt="Decorative White Flower" class="hero-flower-img">
+    </div>
+
+  <!-- Flower image placed at the bottom of hero -->
+    <div class="page-bottom-flower">
+        <img src="Whitepink.png" alt="Decorative Flower">
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Sweet Story</h2>
+                    <p>Inspired Frosts is a heartfelt passion project by Lori Fulmer, blending artistry and sweetness into every creation. With a deep love for baking and design, Lori brings her unique touch to handcrafted cakes, cupcakes, and confections—each one inspired by nature, celebration, and pure joy. What started as a creative outlet has grown into a boutique cakery known for its elegance, floral details, and personal charm.</p>
+                    </div>
+                    
+                <div class = "about-image">
+                    <img src="Lori2.png" alt="Lori Fulmer" /> 
+            </div>
+    </section>
+
+    <section class="services" id="services">
+    <div class="container">
+        <h2>Our Menu</h2>
+        <div class="services-grid">
+
+            <div class="service-card">
+                <img src="sgrid1.jpg" alt="service grid 1" />
+                <div class="service-text">
+                    <h3>Floral Decorated Cakes</h3>
+                    <p>Elegant cakes designed to make your special occasion unforgettable with delicate custom hand-piped buttercream florals and sugar art. Available in a variety of signature flavors.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="sgrid2.png" alt="service grid 2" />
+                <div class="service-text">
+                    <h3>Custom Cupcakes</h3>
+                    <p>Individually crafted cupcakes, each decorated with precision and charm. Perfect for events, gifts, or sweet moments that deserve something special.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="sgrid3.jpg" alt="service grid 3" />
+                <div class="service-text">
+                    <h3>Bouquet-Inspired Arrangements</h3>
+                    <p>Our signature cupcake bouquets blend floral design with edible beauty—lush, hand-piped buttercream blooms arranged to mimic real flower bouquets.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="sgrid5.jpg" alt="service grid 5" />
+                <div class="service-text">
+                    <h3>Cupcake-Filled Numbers & Letters</h3>
+                    <p>Celebrate birthdays, milestones, or names with show-stopping arrangements of cupcakes shaped into custom numbers or letters—stylish and delicious centerpieces.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="sgrid6.jpg" alt="service grid 6" />
+                <div class="service-text">
+                    <h3>Mini Cake & Cupcake Duos</h3>
+                    <p>A charming pairing of a petite layered cake with coordinating cupcakes—ideal for intimate celebrations, gift-giving, or when you want a little of everything.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="sgrid7.jpg" alt="service grid 7" />
+                <div class="service-text">
+                    <h3>Custom Packages</h3>
+                    <p>Trendy curated sets of treats—mix and match cakes, cupcakes, and confections in beautifully designed packages tailored for your event or gifting needs.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="carousel">
+                <button class="carousel-button prev">‹</button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide"><img src="g1.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g2.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g3.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g4.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g5.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g6.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g7.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g8.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g9.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g10.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g11.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g12.jpg" alt=""></li>
+                        <li class="carousel-slide"><img src="g13.jpg" alt=""></li>
+                    </ul>
+                </div>
+                <button class="carousel-button next">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container contact-container">
+            <!-- Header and description -->
+            <h2>Let's Create Something Beautiful Together</h2>
+            <p>Call, email, or send us a message below to start your custom order.</p>
+
+            <!-- Email form -->
+            <form action="mailto:inspiredfrosts@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="Name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required></textarea>
+
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+    <div class="footer-container">
+        <div class="footer-contact-item">Phone: (805) 294-3592</div>
+        <div class="footer-contact-item">
+            Email: <a href="mailto:inspiredfrosts@gmail.com?subject=Custom Cake Order">inspiredfrosts@gmail.com</a>
+        </div>
+        <div class="footer-contact-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram" style="width:20px;height:20px;margin-right:8px;">
+            <a href="https://www.instagram.com/inspired_frosts/" target="_blank">@inspired_frosts</a>
+        </div>
+    </div>
+
+    <!-- ✅ Copyright at the very bottom -->
+        <p style="margin-top: 10px;">&copy; 2025 Inspired Frosts</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header transparency effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('.about, .services, .contact').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <script>
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carousel-button.next');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            });
+
+            window.addEventListener('resize', updateCarousel);
+    </script>
+</body>
+</html>
